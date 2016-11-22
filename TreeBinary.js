@@ -45,24 +45,28 @@ Tree.prototype.getTree = function(){
 	return this._root;
 };
 
+//Return Contains
+Tree.prototype.contains = function(data){
+	return this._root._data.indexOf(data) > -1;
+};
+
 //Query Searsh
+Tree.prototype.query = function(value){
+	var nAux = this.getTree();
+	while(nAux._data.toString() != value){
 
-Tree.prototype.query = function(id){
-	var ndoaux = this._root;
-	var _id = Object.keys(this._root);
+		if(value > nAux._data)
+			nAux = nAux._right;
+		else
+			nAux = nAux._left;
 
-        while (ndoaux.getData() != ndoaux[id]) {
-            if (this._root[id] > ndoaux.getData()) {
-                ndoaux = ndoaux.getRight();
-            } else {
-                ndoaux = ndoaux.getLeft();
-            }
+		if(nAux == null)
+			return null;
 
-            if (ndoaux == null) {
-                return null; 
-            }
-        }
-        return ndoaux;
+	}
+
+	return nAux;
+
 };
 
 //Print Tree in Order
