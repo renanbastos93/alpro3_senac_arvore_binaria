@@ -47,8 +47,22 @@ Tree.prototype.getTree = function(){
 
 //Query Searsh
 
-Tree.prototype.query = function(pNode){
+Tree.prototype.query = function(id){
+	var ndoaux = this._root;
+	var _id = Object.keys(this._root);
 
+        while (ndoaux.getData() != ndoaux[id]) {
+            if (this._root[id] > ndoaux.getData()) {
+                ndoaux = ndoaux.getRight();
+            } else {
+                ndoaux = ndoaux.getLeft();
+            }
+
+            if (ndoaux == null) {
+                return null; 
+            }
+        }
+        return ndoaux;
 };
 
 //Print Tree in Order

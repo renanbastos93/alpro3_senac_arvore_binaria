@@ -1,12 +1,22 @@
-const Tree = require('./TreeBinary');
+const Tree 	= require('./TreeBinary');
+const fs	= require('fs');
 var exapleTree = new Tree();
+var count = 0;
 
-exapleTree.insert(10);
-exapleTree.insert(7);
-exapleTree.insert(5);
-exapleTree.insert(6);
+fs.readFile('routes.txt', 'utf-8', function(err, data){
+	let lines = data.split(/\r?\n/);
+	count = lines.length;
+	for(let line in lines){
+		exapleTree.insert(lines[line]);
+	}
 
-exapleTree.posOrder(exapleTree.getTree());
-exapleTree.posOrder(exapleTree.getTree());
-exapleTree.preOrder(exapleTree.getTree());
-exapleTree.decreasing(exapleTree.getTree());
+});
+
+setInterval(function(){
+	if(exapleTree.getTree())
+		clearInterval(this);
+	exapleTree.inOrder(exapleTree.getTree());
+// exapleTree.posOrder(exapleTree.getTree());
+// exapleTree.preOrder(exapleTree.getTree());
+// exapleTree.decreasing(exapleTree.getTree());
+}, count);
