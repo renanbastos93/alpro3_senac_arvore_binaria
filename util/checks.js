@@ -1,13 +1,13 @@
 function Check(chunk){
 	let msg = {};
 	if(chunk.indexOf('/insert') === 0){
-		msg.insert = chunk.replace('/insert', '');
+		msg.insert = chunk.replace('/insert ', '');
 	}
 	if(chunk.indexOf('/insertFile') === 0){
 		msg.insertFile = true;
 	}
 	if(chunk.indexOf('/query') === 0){
-		msg.query = chunk.replace('/query', '');
+		msg.query = chunk.replace('/query ', '');
 	}
 	if(chunk.indexOf('/inOrder') === 0){
 		msg.inOrder = true;
@@ -23,6 +23,9 @@ function Check(chunk){
 	}
 	if(chunk.indexOf('/clear') === 0){
 		process.stdout.write('\x1Bc');
+	}
+	if(chunk.indexOf('/exit') === 0){
+		process.exit(0);
 	}
 	return msg;
 };

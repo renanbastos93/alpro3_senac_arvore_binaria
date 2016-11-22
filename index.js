@@ -28,7 +28,7 @@ process.nextTick(function(){
 			}
 			if(msg.query){
 				process.nextTick(() => {
-					process.nextTick(() => { console.log(exapleTree.query("T4")) });
+					process.nextTick(() => { console.log(exapleTree.query(msg.query)) });
 				});
 			}
 			if(msg.inOrder){
