@@ -43,6 +43,9 @@ process.nextTick(function(){
 			if(msg.decreasing){
 				process.nextTick(() => exapleTree.decreasing(exapleTree.getTree()) );
 			}
+			if(msg.countNodes){
+				process.nextTick(() => console.log(exapleTree.countNodes(exapleTree.getTree())));
+			}
 		});
 	});
 });

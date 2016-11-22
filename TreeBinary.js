@@ -105,5 +105,11 @@ Tree.prototype.decreasing = function (pNode){
 	}
 };
 
+//Return eficiencia
+Tree.prototype.countNodes = function(pNode){
+	//TO DO missing end
+	return (pNode == null) ? 0 : 1 + this.countNodes(pNode._left) + this.countNodes(pNode._right);
+};
+
 //Export
 module.exports = Tree;

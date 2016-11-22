@@ -27,6 +27,9 @@ function Check(chunk){
 	if(chunk.indexOf('/exit') === 0){
 		process.exit(0);
 	}
+	if(chunk.indexOf('/countNodes') === 0){
+		msg.countNodes = true;
+	}
 	return msg;
 };
 
