@@ -4,7 +4,7 @@ function Check(chunk){
 		msg.insert = chunk.replace('/insert ', '');
 	}
 	if(chunk.indexOf('/insertFile') === 0){
-		msg.insertFile = true;
+		msg.insertFile = chunk.replace('/insertFile ', '');;
 	}
 	if(chunk.indexOf('/query') === 0){
 		msg.query = chunk.replace('/query ', '');

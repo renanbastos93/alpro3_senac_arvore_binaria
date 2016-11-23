@@ -1,14 +1,18 @@
 const fs	= require('fs');
-const Tree 	= require('./TreeBinary');
+const Tree 	= require('./lib/TreeBinary');
 const check	= require('./util/checks');
 const read 	= require('./util/keyboard');
 
 var exapleTree = new Tree();
 
-function insertfile(){
-	let lines = fs.readFileSync('routes.txt', 'utf-8').split(',');///\r?\n/
-	for(line in lines){
-		exapleTree.insert(lines[line].trim());
+function insertfile(file){
+	if(fs.existsSync(file)){
+		let lines = fs.readFileSync(file, 'utf-8').split(',');///\r?\n/
+		for(line in lines){
+			exapleTree.insert(lines[line].trim());
+		}
+	}else{
+		console.log("Não existe o arquivo, "+file);
 	}
 };
 
@@ -24,7 +28,7 @@ process.nextTick(function(){
 				process.nextTick(() => insert(msg.insert) );
 			}
 			if(msg.insertFile){
-				process.nextTick(insertfile);
+				process.nextTick(() => insertfile(msg.insertFile) );
 			}
 			if(msg.query){
 				process.nextTick(() => {
